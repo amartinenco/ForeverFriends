@@ -1,0 +1,6 @@
+## Title: ForeverFriends
+## Notes: Track known friend characters and alts
+## Author: Andrei "Martius" Martinenco
+## Version: 0.1
+
+main.lua
