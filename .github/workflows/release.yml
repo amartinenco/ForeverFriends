@@ -1,0 +1,44 @@
+name: Release ForeverFriends
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Build addon
+        run: python scripts/build.py
+
+      - name: Validate addon build
+        run: |
+          test -f build/ForeverFriends/ForeverFriends.toc
+          test -f build/ForeverFriends/main.lua
+          test -f build/ForeverFriends/Core/Database.lua
+          test -f build/ForeverFriends/Core/Discovery.lua
+
+      - name: Package addon
+        run: |
+          cd build
+          zip -r ../ForeverFriends-${GITHUB_REF_NAME}.zip ForeverFriends
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ForeverFriends ${{ github.ref_name }}
+          generate_release_notes: true
+          files: ForeverFriends-${{ github.ref_name }}.zip
