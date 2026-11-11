@@ -34,7 +34,6 @@ SlashCmdList["FOREVERFRIENDS"] = function(message)
         print("|cff00ccffForeverFriends Commands:|r")
         print("|cffffff00/ff|r - Toggle the friend list")
         print("|cffffff00/ff reset|r - Clear database and rediscover characters")
-        print("|cffffff00/ff reload|r - Reload cache and friend list")
         print("|cffffff00/ff help|r - Show available commands")
 
         return
