@@ -1,6 +1,18 @@
+## Interface: 16001
+## SavedVariables: ForeverFriendsDB
 ## Title: ForeverFriends
 ## Notes: Track known friend characters and alts
 ## Author: Andrei "Martius" Martinenco
 ## Version: 0.1
 
-main.lua
+src/main.lua
+
+src/Core/Database.lua
+src/Core/Discovery.lua
+
+src/UI/MainWindow.lua
+src/UI/FriendList.lua
+
+src/Core/Events.lua
+
+src/Commands/SlashCommands.lua
