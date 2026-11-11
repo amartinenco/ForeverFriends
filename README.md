@@ -22,6 +22,14 @@ Whenever a Battle.net friend logs into World of Warcraft with a character you ha
 
 Opens the ForeverFriends window and displays all discovered Battle.net friends along with the characters observed on those accounts.
 
+### Load / Rediscover Characters
+
+```text
+/ff load
+```
+
+Manually triggers a discovery scan of currently online Battle.net friends. Newly discovered characters are saved to the database.
+
 ### Reset Database
 
 ```text

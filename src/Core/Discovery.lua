@@ -36,9 +36,10 @@ function FF.Discovery:Scan()
                     local realm = gameInfo.realmDisplayName
                         or gameInfo.realmName
 
-                    if charName and realm then
+                    if charName and charName ~= "" then
 
-                        local key = realm .. "-" .. charName
+                        local regionID = gameInfo.regionID
+                        local key = (regionID or 0) .. "-" .. charName
 
                         -- Check RAM cache first
                         local cachedFriend =
@@ -73,7 +74,8 @@ function FF.Discovery:Scan()
                             storedFriend.characters[key] = {
                                 name = charName,
                                 realm = realm,
-                                class = gameInfo.className
+                                class = gameInfo.className,
+                                regionID = regionID
                             }
 
                             -- Update RAM cache

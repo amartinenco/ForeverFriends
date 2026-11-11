@@ -22,7 +22,7 @@ local scanPending = false
 -- Schedule Discovery Scan
 --------------------------------------------------
 
-local function ScheduleDiscoveryScan()
+local function ScheduleDiscoveryScan(delay)
 
     if scanPending then
         return
@@ -30,7 +30,7 @@ local function ScheduleDiscoveryScan()
 
     scanPending = true
 
-    C_Timer.After(3, function()
+    C_Timer.After(delay or 3, function()
 
         scanPending = false
 
@@ -60,7 +60,7 @@ eventFrame:SetScript("OnEvent", function(self, event, friendId, isCompanionApp)
         FF.Database:LoadCache()
         cacheLoaded = true
 
-        ScheduleDiscoveryScan()
+        ScheduleDiscoveryScan(10)
 
     elseif event == "BN_CONNECTED" then
 

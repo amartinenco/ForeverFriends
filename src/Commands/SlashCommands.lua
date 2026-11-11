@@ -10,7 +10,7 @@ SLASH_FOREVERFRIENDS2 = "/foreverfriends"
 
 SlashCmdList["FOREVERFRIENDS"] = function(message)
 
-    message = message:lower():trim()
+    message = (message or ""):lower():trim()
 
     if message == "reset" then
 
@@ -28,11 +28,24 @@ SlashCmdList["FOREVERFRIENDS"] = function(message)
         print("|cff00ff00ForeverFriends database reset and discovery completed.|r")
 
         return
+
+    elseif message == "load" then
+
+        local changed = FF.Discovery:Scan()
+        
+        if changed then
+            FF.Database:LoadFriends()
+        end
+
+        print("|cff00ff00ForeverFriends discovery completed.|r")
+
+        return
     
     elseif message == "help" then
 
         print("|cff00ccffForeverFriends Commands:|r")
         print("|cffffff00/ff|r - Toggle the friend list")
+        print("|cffffff00/ff load|r - Scan online Battle.net friends and save newly discovered characters")
         print("|cffffff00/ff reset|r - Clear database and rediscover characters")
         print("|cffffff00/ff help|r - Show available commands")
 

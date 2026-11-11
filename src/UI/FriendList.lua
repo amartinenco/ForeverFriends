@@ -147,9 +147,24 @@ function FF.UI:RenderTree()
                 charRow:ClearAllPoints()
                 charRow:SetPoint("TOPLEFT", 35, y)
 
+                local region = ""
+
+                if character.regionID == 1 then
+                    region = " (NA)"
+                elseif character.regionID == 2 then
+                    region = " (KR)"
+                elseif character.regionID == 3 then
+                    region = " (EU)"
+                elseif character.regionID == 4 then
+                    region = " (TW)"
+                elseif character.regionID == 5 then
+                    region = " (CN)"
+                end
+
                 local text = string.format(
-                    "%s - %s",
+                    "%s%s - %s",
                     character.name,
+                    region,
                     character.class or "Unknown"
                 )
 
