@@ -61,6 +61,10 @@ eventFrame:SetScript("OnEvent", function(self, event, friendId, isCompanionApp)
         cacheLoaded = true
 
         ScheduleDiscoveryScan(10)
+    
+    elseif event == "PLAYER_ENTERING_WORLD" then 
+
+        ScheduleDiscoveryScan()
 
     elseif event == "BN_CONNECTED" then
 
